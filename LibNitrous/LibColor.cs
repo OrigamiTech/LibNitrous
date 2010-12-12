@@ -12,21 +12,52 @@ namespace LibNitrous
     /// </summary>
     public static class LibColor
     {
+        /*static byte[] lookup5bpp = new byte[]
+        {
+            0x00, 0x08, 0x10, 0x18, 0x21, 0x29, 0x31, 0x39,
+            0x42, 0x4A, 0x52, 0x5A, 0x63, 0x6B, 0x73, 0x7B,
+            0x84, 0x8C, 0x94, 0x9C, 0xA5, 0xAD, 0xB5, 0xBD,
+            0xC6, 0xCE, 0xD6, 0xDE, 0xE7, 0xEF, 0xF7, 0xFF
+        };*/
+        static byte[] lookup5bpp = new byte[]
+        {
+            0x00, 0x08, 0x10, 0x19, 0x21, 0x29, 0x31, 0x3A,
+            0x42, 0x4A, 0x52, 0x5A, 0x63, 0x6B, 0x73, 0x7B,
+            0x84, 0x8C, 0x94, 0x9C, 0xA5, 0xAD, 0xB5, 0xBD,
+            0xC5, 0xCE, 0xD6, 0xDE, 0xE6, 0xEF, 0xF7, 0xFF
+            // supposedly fixes a couple of rounding errors.
+        };
         public static Color XRGB1555(byte b0, byte b1)
-        { return Color.FromArgb(0xFF, (b0 & 0x7C) << 1, ((b0 & 0x03) << 6) | ((b1 & 0xE0) >> 2), (b1 & 0x1F) << 3); }
+        { return XRGB1555((ushort)(((ushort)b0 << 8) | (ushort)b1)); }
+        public static Color XRGB1555(ushort u)
+        { return Color.FromArgb(0xFF, lookup5bpp[(u >> 10) & 0x1F], lookup5bpp[(u >> 5) & 0x1F], lookup5bpp[u & 0x1F]); }
         public static Color XBGR1555(byte b0, byte b1)
-        { return Color.FromArgb(0xFF, (b1 & 0x1F) << 3, ((b0 & 0x03) << 6) | ((b1 & 0xE0) >> 2), (b0 & 0x7C) << 1); }
+        { return XBGR1555((ushort)(((ushort)b0 << 8) | (ushort)b1)); }
+        public static Color XBGR1555(ushort u)
+        { return Color.FromArgb(0xFF, lookup5bpp[u & 0x1F], lookup5bpp[(u >> 5) & 0x1F], lookup5bpp[(u >> 10) & 0x1F]); }
         public static Color ARGB1555(byte b0, byte b1)
-        { return Color.FromArgb((b0 & 0x80), (b0 & 0x7C) << 1, ((b0 & 0x03) << 6) | ((b1 & 0xE0) >> 2), (b1 & 0x1F) << 3); }
+        { return ARGB1555((ushort)(((ushort)b0 << 8) | (ushort)b1)); }
+        public static Color ARGB1555(ushort u)
+        { return Color.FromArgb((u & 0x8000) != 0 ? 0xFF : 0, lookup5bpp[(u >> 10) & 0x1F], lookup5bpp[(u >> 5) & 0x1F], lookup5bpp[u & 0x1F]); }
         public static Color ABGR1555(byte b0, byte b1)
-        { return Color.FromArgb((b0 & 0x80), (b1 & 0x1F) << 3, ((b0 & 0x03) << 6) | ((b1 & 0xE0) >> 2), (b0 & 0x7C) << 1); }
+        { return ABGR1555((ushort)(((ushort)b0 << 8) | (ushort)b1)); }
+        public static Color ABGR1555(ushort u)
+        { return Color.FromArgb((u & 0x8000) != 0 ? 0xFF : 0, lookup5bpp[u & 0x1F], lookup5bpp[(u >> 5) & 0x1F], lookup5bpp[(u >> 10) & 0x1F]); }
         public static Color RGBA5551(byte b0, byte b1)
-        { return Color.FromArgb((b1 & 0x01) << 7, b0 & 0xF8, ((b0 & 0x07) << 5) | ((b1 & 0xC0) >> 3), (b1 & 0x3E) << 2); }
+        { return RGBA5551((ushort)(((ushort)b0 << 8) | (ushort)b1)); }
+        public static Color RGBA5551(ushort u)
+        { return Color.FromArgb((u & 0x0001) != 0 ? 0xFF : 0, lookup5bpp[(u >> 11) & 0x1F], lookup5bpp[(u >> 6) & 0x1F], lookup5bpp[(u >> 1) & 0x1F]); }
         public static Color BGRA5551(byte b0, byte b1)
-        { return Color.FromArgb((b1 & 0x01) << 7, (b1 & 0x3E) << 2, ((b0 & 0x07) << 5) | ((b1 & 0xC0) >> 3), b0 & 0xF8); }
+        { return BGRA5551((ushort)(((ushort)b0 << 8) | (ushort)b1)); }
+        public static Color BGRA5551(ushort u)
+        { return Color.FromArgb((u & 0x0001) != 0 ? 0xFF : 0, lookup5bpp[(u >> 1) & 0x1F], lookup5bpp[(u >> 6) & 0x1F], lookup5bpp[(u >> 11) & 0x1F]); }
         public static Color RGB565(byte b0, byte b1)
-        { return Color.FromArgb(0xFF, b0 & 0xF8, ((b0 & 0x07) << 5) | ((b1 & 0xE0) >> 3), (b1 & 0x1E) << 3); }
+        { return RGB565((ushort)(((ushort)b0 << 8) | (ushort)b1)); }
+        public static Color RGB565(ushort u)
+        { return Color.FromArgb(0xFF, lookup5bpp[(u >> 11) & 0x1F], ((u >> 3) & 0xFC) | ((u >> 9) & 0x03), lookup5bpp[u & 0x1F]); }
         public static Color BGR565(byte b0, byte b1)
-        { return Color.FromArgb(0xFF, (b1 & 0x1E) << 3, ((b0 & 0x07) << 5) | ((b1 & 0xE0) >> 3), b0 & 0xF8); }
+        { return BGR565((ushort)(((ushort)b0 << 8) | (ushort)b1)); }
+        public static Color BGR565(ushort u)
+        { return Color.FromArgb(0xFF, lookup5bpp[u & 0x1F], ((u >> 3) & 0xFC) | ((u >> 9) & 0x03), lookup5bpp[(u >> 11) & 0x1F]); }
     }
 }

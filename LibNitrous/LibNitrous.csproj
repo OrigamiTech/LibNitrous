@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ByteOp.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="FileOp.cs" />
     <Compile Include="GenericHeader.cs" />
     <Compile Include="LibColor.cs" />
     <Compile Include="NCGR.cs" />
