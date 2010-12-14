@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* 
+ * LibNitrous is a simple but powerful hacking library for files commonly used in the Nintendo DS ROM filesystem.
+ * Copyright (C) 2010  Will Kirkby
+ * Read LicenseInformation.txt for more information.
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

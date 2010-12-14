@@ -1,0 +1,10 @@
+﻿File format information:
+	http://llref.emutalk.net/nds_formats.htm
+		Information is wrong for NCGR data:
+			RAHC 'Header Size' doesn't exist,
+			RAHC 'Tile Count' is Tile Count Y,
+			RAHC 'Tile Size' is Tile Count X,
+			Tile Size seems to always be 8 pixels square.
+			SOPC 'Tile Size?' might be bytes-per-tile. In this case the above line may be incorrect.
+	http://d.hatena.ne.jp/loveemu/20091002/nds_formats
+	http://treeki.shacknet.nu/romhacking/docs.html

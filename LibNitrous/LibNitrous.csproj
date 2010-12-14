@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,13 +45,20 @@
   <ItemGroup>
     <Compile Include="ByteOp.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ENPG.cs" />
     <Compile Include="FileOp.cs" />
     <Compile Include="GenericHeader.cs" />
     <Compile Include="LibColor.cs" />
+    <Compile Include="LZ77.cs" />
     <Compile Include="NCGR.cs" />
     <Compile Include="NCLR.cs" />
     <Compile Include="NSCR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GPL.txt" />
+    <Content Include="HelpfulLinks.txt" />
+    <Content Include="LicenceInformation.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

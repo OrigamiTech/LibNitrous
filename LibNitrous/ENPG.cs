@@ -10,9 +10,8 @@ using System.Text;
 
 namespace LibNitrous
 {
-    static class Constants
+    class ENPG
     {
-        public const uint GENERIC_HEADER_CONSTANT = 0xFFFE0001;
-        public const ushort GENERIC_HEADER_SIZE = 0x10;
+        // I'll add some code later. Thanks to Treeki's documentation, I know that the file is LZ77-compressed.
     }
 }
