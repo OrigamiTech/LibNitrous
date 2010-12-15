@@ -17,7 +17,8 @@ namespace LibNitrous
         public const string
             GHEADER_TAG = "RGCN",
             HEADER_TAG_TTLP = "RAHC",
-            HEADER_TAG_PCMP = "SOPC";
+            HEADER_TAG_PCMP = "SOPC",
+            Filter = "*.ncgr";
         private GenericHeader _GHeader;
         private RAHC_Class _RAHC;
         private SOPC_Class _SOPC;

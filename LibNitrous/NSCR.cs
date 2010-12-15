@@ -16,7 +16,8 @@ namespace LibNitrous
     {
         public const string
             GHEADER_TAG = "RCSN",
-            HEADER_TAG_NRCS = "NRCS";
+            HEADER_TAG_NRCS = "NRCS",
+            Filter = "*.nscr";
         private GenericHeader _GHeader;
         private NRCS_Class _NRCS;
         public GenericHeader GHeader

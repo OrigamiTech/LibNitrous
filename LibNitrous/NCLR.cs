@@ -17,7 +17,8 @@ namespace LibNitrous
         public const string
             GHEADER_TAG = "RLCN",
             HEADER_TAG_TTLP = "TTLP",
-            HEADER_TAG_PCMP = "PCMP";
+            HEADER_TAG_PCMP = "PCMP",
+            Filter = "*.nclr";
         private GenericHeader _GHeader;
         private TTLP_Class _TTLP;
         private PCMP_Class _PCMP;
